@@ -12,3 +12,8 @@
 - [Tutorial 11: Query Data Sources](tutorial-11)
 - [Tutorial 12: Create Resource Dependencies](tutorial-12)
 - [Tutorial 13: Perform Dynamic Operations with Functions](tutorial-13)
+- [Tutorial 14: Manage Resources in Terraform State](tutorial-14)
+- [Tutorial 15: Import Terraform Configuration](tutorial-15)
+- [Tutorial 16: Manage Resource Drift](tutorial-16)
+- [Tutorial 17: Use Refresh-Only Mode to Sync Terraform State](tutorial-17)
+- [Tutorial 18: Troubleshoot Terraform](tutorial-18)
