@@ -26,3 +26,5 @@ Study for the Terraform Associate exam by following these tutorials. [Login](htt
 - [Tutorial 21: Host a Static Website with S3 and Cloudflare](tutorial-21)
 - [Tutorial 22: Provision Infrastructure with Cloud-Init](tutorial-22)
 - [Tutorial 23: Provision Infrastructure with Packer](tutorial-23)
+- [Tutorial 24: Install the Sentinel CLI](tutorial-24)
+- [Tutorial 25: Inject Secrets into Terraform Using the Vault Provider](tutorial-25)

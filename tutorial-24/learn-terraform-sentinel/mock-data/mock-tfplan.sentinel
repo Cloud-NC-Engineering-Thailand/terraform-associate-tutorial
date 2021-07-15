@@ -1,0 +1,429 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"path": [],
+		"resources": {
+			"aws_s3_bucket": {
+				"bucket": {
+					0: {
+						"applied": {
+							"acl":                                  "public-read",
+							"bucket_prefix":                        null,
+							"cors_rule":                            [],
+							"force_destroy":                        true,
+							"grant":                                [],
+							"lifecycle_rule":                       [],
+							"logging":                              [],
+							"object_lock_configuration":            [],
+							"replication_configuration":            [],
+							"server_side_encryption_configuration": [],
+							"tags": {
+								"Environment": "value",
+								"Name":        "actual",
+							},
+							"website": [
+								{
+									"error_document":           "error.html",
+									"index_document":           "index.html",
+									"redirect_all_requests_to": null,
+									"routing_rules":            null,
+								},
+							],
+						},
+						"destroy": false,
+						"diff": {
+							"acceleration_status": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"acl": {
+								"computed": false,
+								"new":      "public-read",
+								"old":      "",
+							},
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket_domain_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket_prefix": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket_regional_domain_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cors_rule.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"force_destroy": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"grant.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"hosted_zone_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"lifecycle_rule.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"logging.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"object_lock_configuration.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"policy": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"region": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"replication_configuration.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"request_payer": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"server_side_encryption_configuration.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"tags.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"tags.Environment": {
+								"computed": false,
+								"new":      "value",
+								"old":      "",
+							},
+							"tags.Name": {
+								"computed": false,
+								"new":      "actual",
+								"old":      "",
+							},
+							"versioning.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"website.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"website.0.%": {
+								"computed": false,
+								"new":      "4",
+								"old":      "",
+							},
+							"website.0.error_document": {
+								"computed": false,
+								"new":      "error.html",
+								"old":      "",
+							},
+							"website.0.index_document": {
+								"computed": false,
+								"new":      "index.html",
+								"old":      "",
+							},
+							"website.0.redirect_all_requests_to": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"website.0.routing_rules": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"website_domain": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"website_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_s3_bucket_object": {
+				"bucket": {
+					0: {
+						"applied": {
+							"acl":                           "public-read",
+							"cache_control":                 null,
+							"content":                       "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Terramino</title>\n    <style>\n      html,\n      body {\n        height: 100%;\n        margin: 0;\n      }\n\n      body {\n\n        background-image: url(\"https://raw.githubusercontent.com/hashicorp/learn-terraform-circleci/master/assets/background.png\");\n        display: flex;\n        align-items: center;\n        justify-content: center;\n      }\n\n      canvas {\n        border: 1px solid white;\n      }\n    </style>\n  </head>\n\n  <body>\n    <canvas width=\"320\" height=\"640\" id=\"game\"></canvas>\n    <script>\n      // https://tetris.fandom.com/wiki/Tetris_Guideline\n\n      // get a random integer between the range of [min,max]\n      // @see https://stackoverflow.com/a/1527820/2124254\n      function getRandomInt(min, max) {\n        min = Math.ceil(min);\n        max = Math.floor(max);\n\n        return Math.floor(Math.random() * (max - min + 1)) + min;\n      }\n\n      // generate a new tetromino sequence\n      // @see https://tetris.fandom.com/wiki/Random_Generator\n      function generateSequence() {\n        const sequence = [\"I\", \"J\", \"L\", \"O\", \"S\", \"T\", \"Z\"];\n\n        while (sequence.length) {\n          const rand = getRandomInt(0, sequence.length - 1);\n          const name = sequence.splice(rand, 1)[0];\n          tetrominoSequence.push(name);\n        }\n      }\n\n      // get the next tetromino in the sequence\n      function getNextTetromino() {\n        if (tetrominoSequence.length === 0) {\n          generateSequence();\n        }\n\n        const name = tetrominoSequence.pop();\n        const matrix = tetrominos[name];\n\n        // I and O start centered, all others start in left-middle\n        const col = playfield[0].length / 2 - Math.ceil(matrix[0].length / 2);\n\n        // I starts on row 21 (-1), all others start on row 22 (-2)\n        const row = name === \"I\" ? -1 : -2;\n\n        return {\n          name: name, // name of the piece (L, O, etc.)\n          matrix: matrix, // the current rotation matrix\n          row: row, // current row (starts offscreen)\n          col: col // current col\n        };\n      }\n\n      // rotate an NxN matrix 90deg\n      // @see https://codereview.stackexchange.com/a/186834\n      function rotate(matrix) {\n        const N = matrix.length - 1;\n        const result = matrix.map((row, i) =>\n          row.map((val, j) => matrix[N - j][i])\n        );\n\n        return result;\n      }\n\n      // check to see if the new matrix/row/col is valid\n      function isValidMove(matrix, cellRow, cellCol) {\n        for (let row = 0; row < matrix.length; row++) {\n          for (let col = 0; col < matrix[row].length; col++) {\n            if (\n              matrix[row][col] &&\n              // outside the game bounds\n              (cellCol + col < 0 ||\n                cellCol + col >= playfield[0].length ||\n                cellRow + row >= playfield.length ||\n                // collides with another piece\n                playfield[cellRow + row][cellCol + col])\n            ) {\n              return false;\n            }\n          }\n        }\n\n        return true;\n      }\n\n      // place the tetromino on the playfield\n      function placeTetromino() {\n        for (let row = 0; row < tetromino.matrix.length; row++) {\n          for (let col = 0; col < tetromino.matrix[row].length; col++) {\n            if (tetromino.matrix[row][col]) {\n              // game over if piece has any part offscreen\n              if (tetromino.row + row < 0) {\n                return showGameOver();\n              }\n\n              playfield[tetromino.row + row][tetromino.col + col] =\n                tetromino.name;\n            }\n          }\n        }\n\n        // check for line clears starting from the bottom and working our way up\n        for (let row = playfield.length - 1; row >= 0; ) {\n          if (playfield[row].every(cell => !!cell)) {\n            // drop every row above this one\n            for (let r = row; r >= 0; r--) {\n              playfield[r] = playfield[r - 1];\n            }\n          } else {\n            row--;\n          }\n        }\n\n        tetromino = getNextTetromino();\n      }\n\n      // show the game over screen\n      function showGameOver() {\n        cancelAnimationFrame(rAF);\n        gameOver = true;\n\n        context.fillStyle = \"black\";\n        context.globalAlpha = 0.75;\n        context.fillRect(0, canvas.height / 2 - 30, canvas.width, 60);\n\n        context.globalAlpha = 1;\n        context.fillStyle = \"white\";\n        context.font = \"36px monospace\";\n        context.textAlign = \"center\";\n        context.textBaseline = \"middle\";\n        context.fillText(\"GAME OVER!\", canvas.width / 2, canvas.height / 2);\n      }\n\n      const canvas = document.getElementById(\"game\");\n      const context = canvas.getContext(\"2d\");\n      const grid = 32;\n      const tetrominoSequence = [];\n\n      // keep track of what is in every cell of the game using a 2d array\n      // tetris playfield is 10x20, with a few rows offscreen\n      const playfield = [];\n\n      // populate the empty state\n      for (let row = -2; row < 20; row++) {\n        playfield[row] = [];\n\n        for (let col = 0; col < 10; col++) {\n          playfield[row][col] = 0;\n        }\n      }\n\n      // how to draw each tetromino\n      // @see https://tetris.fandom.com/wiki/SRS\n      const tetrominos = {\n        I: [[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]],\n        J: [[1, 0, 0], [1, 1, 1], [0, 0, 0]],\n        L: [[0, 0, 1], [1, 1, 1], [0, 0, 0]],\n        O: [[1, 1], [1, 1]],\n        S: [[0, 1, 1], [1, 1, 0], [0, 0, 0]],\n        Z: [[1, 1, 0], [0, 1, 1], [0, 0, 0]],\n        T: [[0, 1, 0], [1, 1, 1], [0, 0, 0]]\n      };\n\n      // color of each tetromino\n      const colors = {\n        I: \"#623CE4\",\n        O: \"#7C8797\",\n        T: \"#00BC7F\",\n        S: \"#CA2171\",\n        Z: \"#1563ff\",\n        J: \"#00ACFF\",\n        L: \"white\"\n      };\n\n      let count = 0;\n      let tetromino = getNextTetromino();\n      let rAF = null; // keep track of the animation frame so we can cancel it\n      let gameOver = false;\n\n      // game loop\n      function loop() {\n        rAF = requestAnimationFrame(loop);\n        context.clearRect(0, 0, canvas.width, canvas.height);\n\n        // draw the playfield\n        for (let row = 0; row < 20; row++) {\n          for (let col = 0; col < 10; col++) {\n            if (playfield[row][col]) {\n              const name = playfield[row][col];\n              context.fillStyle = colors[name];\n\n              // drawing 1 px smaller than the grid creates a grid effect\n              context.fillRect(col * grid, row * grid, grid - 1, grid - 1);\n            }\n          }\n        }\n\n        // draw the active tetromino\n        if (tetromino) {\n          // tetromino falls every 35 frames\n          if (++count > 35) {\n            tetromino.row++;\n            count = 0;\n\n            // place piece if it runs into anything\n            if (!isValidMove(tetromino.matrix, tetromino.row, tetromino.col)) {\n              tetromino.row--;\n              placeTetromino();\n            }\n          }\n\n          context.fillStyle = colors[tetromino.name];\n\n          for (let row = 0; row < tetromino.matrix.length; row++) {\n            for (let col = 0; col < tetromino.matrix[row].length; col++) {\n              if (tetromino.matrix[row][col]) {\n                // drawing 1 px smaller than the grid creates a grid effect\n                context.fillRect(\n                  (tetromino.col + col) * grid,\n                  (tetromino.row + row) * grid,\n                  grid - 1,\n                  grid - 1\n                );\n              }\n            }\n          }\n        }\n      }\n\n      // listen to keyboard events to move the active tetromino\n      document.addEventListener(\"keydown\", function(e) {\n        if (gameOver) return;\n\n        // left and right arrow keys (move)\n        if (e.which === 37 || e.which === 39) {\n          const col = e.which === 37 ? tetromino.col - 1 : tetromino.col + 1;\n\n          if (isValidMove(tetromino.matrix, tetromino.row, col)) {\n            tetromino.col = col;\n          }\n        }\n\n        // up arrow key (rotate)\n        if (e.which === 38) {\n          const matrix = rotate(tetromino.matrix);\n          if (isValidMove(matrix, tetromino.row, tetromino.col)) {\n            tetromino.matrix = matrix;\n          }\n        }\n\n        // down arrow key (drop)\n        if (e.which === 40) {\n          const row = tetromino.row + 1;\n\n          if (!isValidMove(tetromino.matrix, row, tetromino.col)) {\n            tetromino.row = row - 1;\n\n            placeTetromino();\n            return;\n          }\n\n          tetromino.row = row;\n        }\n      });\n\n      // start the game\n      rAF = requestAnimationFrame(loop);\n    </script>\n  </body>\n</html>\n",
+							"content_base64":                null,
+							"content_disposition":           null,
+							"content_encoding":              null,
+							"content_language":              null,
+							"content_type":                  "text/html",
+							"force_destroy":                 false,
+							"key":                           "index.html",
+							"kms_key_id":                    null,
+							"metadata":                      null,
+							"object_lock_legal_hold_status": null,
+							"object_lock_mode":              null,
+							"object_lock_retain_until_date": null,
+							"source":                        null,
+							"tags":                          null,
+							"website_redirect":              null,
+						},
+						"destroy": false,
+						"diff": {
+							"acl": {
+								"computed": false,
+								"new":      "public-read",
+								"old":      "",
+							},
+							"bucket": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cache_control": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"content": {
+								"computed": false,
+								"new":      "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Terramino</title>\n    <style>\n      html,\n      body {\n        height: 100%;\n        margin: 0;\n      }\n\n      body {\n\n        background-image: url(\"https://raw.githubusercontent.com/hashicorp/learn-terraform-circleci/master/assets/background.png\");\n        display: flex;\n        align-items: center;\n        justify-content: center;\n      }\n\n      canvas {\n        border: 1px solid white;\n      }\n    </style>\n  </head>\n\n  <body>\n    <canvas width=\"320\" height=\"640\" id=\"game\"></canvas>\n    <script>\n      // https://tetris.fandom.com/wiki/Tetris_Guideline\n\n      // get a random integer between the range of [min,max]\n      // @see https://stackoverflow.com/a/1527820/2124254\n      function getRandomInt(min, max) {\n        min = Math.ceil(min);\n        max = Math.floor(max);\n\n        return Math.floor(Math.random() * (max - min + 1)) + min;\n      }\n\n      // generate a new tetromino sequence\n      // @see https://tetris.fandom.com/wiki/Random_Generator\n      function generateSequence() {\n        const sequence = [\"I\", \"J\", \"L\", \"O\", \"S\", \"T\", \"Z\"];\n\n        while (sequence.length) {\n          const rand = getRandomInt(0, sequence.length - 1);\n          const name = sequence.splice(rand, 1)[0];\n          tetrominoSequence.push(name);\n        }\n      }\n\n      // get the next tetromino in the sequence\n      function getNextTetromino() {\n        if (tetrominoSequence.length === 0) {\n          generateSequence();\n        }\n\n        const name = tetrominoSequence.pop();\n        const matrix = tetrominos[name];\n\n        // I and O start centered, all others start in left-middle\n        const col = playfield[0].length / 2 - Math.ceil(matrix[0].length / 2);\n\n        // I starts on row 21 (-1), all others start on row 22 (-2)\n        const row = name === \"I\" ? -1 : -2;\n\n        return {\n          name: name, // name of the piece (L, O, etc.)\n          matrix: matrix, // the current rotation matrix\n          row: row, // current row (starts offscreen)\n          col: col // current col\n        };\n      }\n\n      // rotate an NxN matrix 90deg\n      // @see https://codereview.stackexchange.com/a/186834\n      function rotate(matrix) {\n        const N = matrix.length - 1;\n        const result = matrix.map((row, i) =>\n          row.map((val, j) => matrix[N - j][i])\n        );\n\n        return result;\n      }\n\n      // check to see if the new matrix/row/col is valid\n      function isValidMove(matrix, cellRow, cellCol) {\n        for (let row = 0; row < matrix.length; row++) {\n          for (let col = 0; col < matrix[row].length; col++) {\n            if (\n              matrix[row][col] &&\n              // outside the game bounds\n              (cellCol + col < 0 ||\n                cellCol + col >= playfield[0].length ||\n                cellRow + row >= playfield.length ||\n                // collides with another piece\n                playfield[cellRow + row][cellCol + col])\n            ) {\n              return false;\n            }\n          }\n        }\n\n        return true;\n      }\n\n      // place the tetromino on the playfield\n      function placeTetromino() {\n        for (let row = 0; row < tetromino.matrix.length; row++) {\n          for (let col = 0; col < tetromino.matrix[row].length; col++) {\n            if (tetromino.matrix[row][col]) {\n              // game over if piece has any part offscreen\n              if (tetromino.row + row < 0) {\n                return showGameOver();\n              }\n\n              playfield[tetromino.row + row][tetromino.col + col] =\n                tetromino.name;\n            }\n          }\n        }\n\n        // check for line clears starting from the bottom and working our way up\n        for (let row = playfield.length - 1; row >= 0; ) {\n          if (playfield[row].every(cell => !!cell)) {\n            // drop every row above this one\n            for (let r = row; r >= 0; r--) {\n              playfield[r] = playfield[r - 1];\n            }\n          } else {\n            row--;\n          }\n        }\n\n        tetromino = getNextTetromino();\n      }\n\n      // show the game over screen\n      function showGameOver() {\n        cancelAnimationFrame(rAF);\n        gameOver = true;\n\n        context.fillStyle = \"black\";\n        context.globalAlpha = 0.75;\n        context.fillRect(0, canvas.height / 2 - 30, canvas.width, 60);\n\n        context.globalAlpha = 1;\n        context.fillStyle = \"white\";\n        context.font = \"36px monospace\";\n        context.textAlign = \"center\";\n        context.textBaseline = \"middle\";\n        context.fillText(\"GAME OVER!\", canvas.width / 2, canvas.height / 2);\n      }\n\n      const canvas = document.getElementById(\"game\");\n      const context = canvas.getContext(\"2d\");\n      const grid = 32;\n      const tetrominoSequence = [];\n\n      // keep track of what is in every cell of the game using a 2d array\n      // tetris playfield is 10x20, with a few rows offscreen\n      const playfield = [];\n\n      // populate the empty state\n      for (let row = -2; row < 20; row++) {\n        playfield[row] = [];\n\n        for (let col = 0; col < 10; col++) {\n          playfield[row][col] = 0;\n        }\n      }\n\n      // how to draw each tetromino\n      // @see https://tetris.fandom.com/wiki/SRS\n      const tetrominos = {\n        I: [[0, 0, 0, 0], [1, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]],\n        J: [[1, 0, 0], [1, 1, 1], [0, 0, 0]],\n        L: [[0, 0, 1], [1, 1, 1], [0, 0, 0]],\n        O: [[1, 1], [1, 1]],\n        S: [[0, 1, 1], [1, 1, 0], [0, 0, 0]],\n        Z: [[1, 1, 0], [0, 1, 1], [0, 0, 0]],\n        T: [[0, 1, 0], [1, 1, 1], [0, 0, 0]]\n      };\n\n      // color of each tetromino\n      const colors = {\n        I: \"#623CE4\",\n        O: \"#7C8797\",\n        T: \"#00BC7F\",\n        S: \"#CA2171\",\n        Z: \"#1563ff\",\n        J: \"#00ACFF\",\n        L: \"white\"\n      };\n\n      let count = 0;\n      let tetromino = getNextTetromino();\n      let rAF = null; // keep track of the animation frame so we can cancel it\n      let gameOver = false;\n\n      // game loop\n      function loop() {\n        rAF = requestAnimationFrame(loop);\n        context.clearRect(0, 0, canvas.width, canvas.height);\n\n        // draw the playfield\n        for (let row = 0; row < 20; row++) {\n          for (let col = 0; col < 10; col++) {\n            if (playfield[row][col]) {\n              const name = playfield[row][col];\n              context.fillStyle = colors[name];\n\n              // drawing 1 px smaller than the grid creates a grid effect\n              context.fillRect(col * grid, row * grid, grid - 1, grid - 1);\n            }\n          }\n        }\n\n        // draw the active tetromino\n        if (tetromino) {\n          // tetromino falls every 35 frames\n          if (++count > 35) {\n            tetromino.row++;\n            count = 0;\n\n            // place piece if it runs into anything\n            if (!isValidMove(tetromino.matrix, tetromino.row, tetromino.col)) {\n              tetromino.row--;\n              placeTetromino();\n            }\n          }\n\n          context.fillStyle = colors[tetromino.name];\n\n          for (let row = 0; row < tetromino.matrix.length; row++) {\n            for (let col = 0; col < tetromino.matrix[row].length; col++) {\n              if (tetromino.matrix[row][col]) {\n                // drawing 1 px smaller than the grid creates a grid effect\n                context.fillRect(\n                  (tetromino.col + col) * grid,\n                  (tetromino.row + row) * grid,\n                  grid - 1,\n                  grid - 1\n                );\n              }\n            }\n          }\n        }\n      }\n\n      // listen to keyboard events to move the active tetromino\n      document.addEventListener(\"keydown\", function(e) {\n        if (gameOver) return;\n\n        // left and right arrow keys (move)\n        if (e.which === 37 || e.which === 39) {\n          const col = e.which === 37 ? tetromino.col - 1 : tetromino.col + 1;\n\n          if (isValidMove(tetromino.matrix, tetromino.row, col)) {\n            tetromino.col = col;\n          }\n        }\n\n        // up arrow key (rotate)\n        if (e.which === 38) {\n          const matrix = rotate(tetromino.matrix);\n          if (isValidMove(matrix, tetromino.row, tetromino.col)) {\n            tetromino.matrix = matrix;\n          }\n        }\n\n        // down arrow key (drop)\n        if (e.which === 40) {\n          const row = tetromino.row + 1;\n\n          if (!isValidMove(tetromino.matrix, row, tetromino.col)) {\n            tetromino.row = row - 1;\n\n            placeTetromino();\n            return;\n          }\n\n          tetromino.row = row;\n        }\n      });\n\n      // start the game\n      rAF = requestAnimationFrame(loop);\n    </script>\n  </body>\n</html>\n",
+								"old":      "",
+							},
+							"content_base64": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"content_disposition": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"content_encoding": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"content_language": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"content_type": {
+								"computed": false,
+								"new":      "text/html",
+								"old":      "",
+							},
+							"etag": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"force_destroy": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"key": {
+								"computed": false,
+								"new":      "index.html",
+								"old":      "",
+							},
+							"kms_key_id": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"metadata": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"object_lock_legal_hold_status": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"object_lock_mode": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"object_lock_retain_until_date": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"server_side_encryption": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"source": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"storage_class": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"version_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"website_redirect": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"random_pet": {
+				"petname": {
+					0: {
+						"applied": {
+							"keepers":   null,
+							"length":    3,
+							"prefix":    null,
+							"separator": "-",
+						},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"keepers": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"length": {
+								"computed": false,
+								"new":      "3",
+								"old":      "",
+							},
+							"prefix": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"separator": {
+								"computed": false,
+								"new":      "-",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+]
+
+terraform_version = "0.12.25"
+
+variables = {
+	"prefix": "rachels",
+	"region": "us-east-1",
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources
