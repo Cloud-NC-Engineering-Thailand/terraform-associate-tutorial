@@ -1,5 +1,9 @@
 # Terraform Associate Tutorial
 
+Study for the Terraform Associate exam by following these tutorials. [Login](https://learn.hashicorp.com/collections/terraform/certification-associate-tutorials) to Learn and bookmark them to track your progress. Study the complete list of study materials (including docs) in the [Certification Prep guides](https://learn.hashicorp.com/collections/terraform/certification).
+
+---
+
 - [Tutorial 1: Introduction to Infrastructure as Code with Terraform](https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code?in=terraform/certification-associate-tutorials)
 - [Tutorial 2: Install Terraform](tutorial-2)
 - [Tutorial 3: Lock and Upgrade Provider Versions](tutorial-3)
@@ -17,3 +21,8 @@
 - [Tutorial 16: Manage Resource Drift](tutorial-16)
 - [Tutorial 17: Use Refresh-Only Mode to Sync Terraform State](tutorial-17)
 - [Tutorial 18: Troubleshoot Terraform](tutorial-18)
+- [Tutorial 19: Modules Overview](https://learn.hashicorp.com/tutorials/terraform/module?in=terraform/certification-associate-tutorials)
+- [Tutorial 20: Use Modules from the Registry](tutorial-20)
+- [Tutorial 21: Host a Static Website with S3 and Cloudflare](tutorial-21)
+- [Tutorial 22: Provision Infrastructure with Cloud-Init](tutorial-22)
+- [Tutorial 23: Provision Infrastructure with Packer](tutorial-23)
